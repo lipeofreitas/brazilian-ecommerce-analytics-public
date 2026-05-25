@@ -172,3 +172,137 @@ Cancel Rate:
 - PBIP/TMDL files are the preferred GitHub artifacts for the Power BI dashboard.
 - `.pbi/` cache folders and local Power BI settings should remain ignored.
 - The `.pbix` file is still a local binary artifact and should only be committed intentionally if a downloadable report file is required.
+
+## 2026-02-23
+
+Focused on consolidating the Gold/BI layer and improving the Power BI-ready fact model.
+
+### Gold Layer Consolidation
+
+- Merged finance and fulfillment logic into a more complete `fact_orders` structure.
+- Updated item-level fact logic to support revenue and operational analysis by product category.
+- Refined validation queries used to compare order, payment, and revenue outputs.
+- Archived older scripts and local database artifacts that were no longer part of the active project structure.
+
+### Dashboard Progress
+
+- Updated the Power BI dashboard file during the finance and BI modeling iteration.
+- Continued moving the project toward a cleaner analytical model for dashboard consumption.
+
+## 2026-02-12
+
+Focused on improving geographic analysis and project documentation.
+
+### Geography Updates
+
+- Added a ZIP-level geography dimension designed for direct Power BI import.
+- Improved the model's ability to support location-based visuals and state/geography analysis.
+
+### Documentation
+
+- Updated the README with additional project context and structure details.
+
+## 2026-02-11
+
+Focused on making Power BI logic easier to version and review.
+
+### Power BI Source Control
+
+- Added a model folder for DAX/query code tracking.
+- Added Power Query M scripts to support transparent Power BI transformation logic.
+- Started separating report logic from the binary Power BI file where possible.
+
+## 2026-02-06
+
+Focused on calendar modeling and documentation improvements.
+
+### Date Dimension
+
+- Added a Gold date dimension directly in SQL.
+- Chose to maintain the date table in the database layer instead of creating it only inside Power BI.
+- This improved consistency between SQL outputs and Power BI reporting.
+
+### Documentation
+
+- Updated README documentation with new project information.
+
+## 2026-02-03 / 2026-02-04
+
+Focused on BI-ready Gold views, finance logic, fulfillment KPIs, and query refinements.
+
+### BI-Ready Gold Views
+
+- Created Gold views designed specifically for Power BI consumption.
+- Added BI fact views for finance and order fulfillment analysis.
+- Improved fact payment logic to support relationship-based analysis across the model.
+
+### KPI And Performance Updates
+
+- Added new operational KPIs to the fulfillment fact view.
+- Adjusted CTE logic for better readability and performance.
+- Applied minor query updates to review-related Silver logic.
+- Continued using scratch SQL files for validation and exploratory checks.
+
+### Documentation
+
+- Updated README content with more complete project information.
+
+## 2026-02-02
+
+Focused on the transition from raw/Silver preparation into a structured Gold analytical model.
+
+### Silver Layer Refinement
+
+- Updated Silver views for customers, geolocation, orders, order items, payments, products, sellers, and reviews.
+- Improved cleaning and standardization logic across Silver views.
+- Added stronger handling for null values, duplicates, and text consistency.
+
+### Gold Layer Foundation
+
+- Started building dimensional and fact tables for the Gold layer.
+- Added early dimensions for customers, geography, products, and sellers.
+- Added early fact structures for payments, reviews, and sales.
+- Added Gold model creation and data quality SQL scripts.
+
+### Project Dependencies
+
+- Updated project requirements to support the evolving pipeline.
+
+## 2026-01-30
+
+Focused on Silver layer data quality and standardization.
+
+### Data Quality
+
+- Added checks for accent handling in city fields.
+- Validated Brazilian state patterns to reduce geography issues.
+- Improved Silver logic with `NULLIF`, duplicate checks, and sanity checks.
+
+## 2026-01-29
+
+Initial project setup and repository organization.
+
+### Repository Setup
+
+- Initialized the project repository.
+- Added README, license, Git ignore rules, and development journal structure.
+- Added Python dependencies and early support scripts.
+
+### Bronze Layer
+
+- Added the first Bronze ingestion script.
+- Loaded the original Olist e-commerce raw datasets into the local project structure.
+- Included raw source files during the initial private development phase.
+
+### Silver Layer
+
+- Added initial SQL scripts for database/schema creation.
+- Added early Silver view creation scripts.
+- Added Silver data quality checks.
+- Started the first Gold model creation and validation scripts.
+
+### Documentation Cleanup
+
+- Added initial README content.
+- Updated project descriptions and comments.
+- Removed obsolete Copilot instruction material from the active documentation flow.
