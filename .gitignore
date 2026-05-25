@@ -33,3 +33,6 @@ data/0. raw/*.csv
 # Large binary Power BI files.
 # Prefer PBIP/TMDL files for source control; keep PBIX out unless you explicitly want a downloadable report.
 *.pbix
+
+# Local project images kept outside source control.
+Brazilian E-Commerce Project.png
