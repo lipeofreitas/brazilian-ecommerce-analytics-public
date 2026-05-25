@@ -115,7 +115,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Data Source: Olist brazilian E-Commerce public datase (kaggle)'"
+                  "Value": "'Data Source: Olist brazilian E-Commerce public dataset (kaggle)'"
                 }
               }
             },
