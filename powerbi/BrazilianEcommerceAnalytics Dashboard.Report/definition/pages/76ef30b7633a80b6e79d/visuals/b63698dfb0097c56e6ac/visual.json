@@ -238,23 +238,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "f01ed000261849b1833b",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "f00a7c0327abb24aca60",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "__Measures"
-              }
-            },
-            "Property": "Other | Selected Approval Time"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
-  }
+  "parentGroupName": "f01ed000261849b1833b"
 }

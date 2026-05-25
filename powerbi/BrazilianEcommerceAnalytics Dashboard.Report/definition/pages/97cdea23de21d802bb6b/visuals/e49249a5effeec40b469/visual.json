@@ -7,7 +7,7 @@
     "z": 0,
     "height": 57,
     "width": 285.55555555555554,
-    "tabOrder": 9010
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -238,23 +238,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "e9d2f4c807b6870c985c",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "f922cdca80f18574f5e2",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "__Measures"
-              }
-            },
-            "Property": "Other | Selected Approval Time"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
-  }
+  "parentGroupName": "e9d2f4c807b6870c985c"
 }

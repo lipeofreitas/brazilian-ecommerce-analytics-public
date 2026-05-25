@@ -120,6 +120,17 @@
                   "Value": "false"
                 }
               }
+            },
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#5B9BD5'"
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -297,6 +308,34 @@
             }
           ]
         }
+      },
+      {
+        "name": "50eb41c4c9fdfe858e59",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "__Measures"
+              }
+            },
+            "Property": "Finance | Item Gross Revenue"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9a5c415afc6780cd216c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "__Measures"
+              }
+            },
+            "Property": "Other | Orders by Product Category"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

@@ -7,7 +7,7 @@
     "z": 5000,
     "height": 75.555555555555557,
     "width": 225.55555555555554,
-    "tabOrder": 9006
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "slicer",
@@ -188,37 +188,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "e9d2f4c807b6870c985c",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "8bb74f1723c2e927586b",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Calendar"
-              }
-            },
-            "Property": "year_number"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "304ee36478339d03d84d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Calendar"
-              }
-            },
-            "Property": "month_short_name"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "e9d2f4c807b6870c985c"
 }

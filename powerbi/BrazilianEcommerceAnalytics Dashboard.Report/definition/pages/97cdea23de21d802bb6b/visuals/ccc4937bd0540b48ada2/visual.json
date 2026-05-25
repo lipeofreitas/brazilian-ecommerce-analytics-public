@@ -7,7 +7,7 @@
     "z": 1000,
     "height": 243.33333333333331,
     "width": 241.11111111111111,
-    "tabOrder": 9008
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "slicer",
@@ -184,23 +184,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "e9d2f4c807b6870c985c",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "ace6ced676bab85dfefa",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_approval_speed"
-              }
-            },
-            "Property": "approval_speed_bucket"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "e9d2f4c807b6870c985c"
 }

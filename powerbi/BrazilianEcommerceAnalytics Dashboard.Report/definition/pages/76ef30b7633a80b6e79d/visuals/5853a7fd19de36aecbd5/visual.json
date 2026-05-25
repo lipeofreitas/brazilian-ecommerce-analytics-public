@@ -226,20 +226,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "10691310ae5dbc791f1d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "d_Products"
-              }
-            },
-            "Property": "product_category_group"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

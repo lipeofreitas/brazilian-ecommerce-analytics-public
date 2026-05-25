@@ -196,47 +196,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "f01ed000261849b1833b",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "7233a7de0baa9f74b116",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "d_State"
-                  }
-                },
-                "Hierarchy": "Region - State"
-              }
-            },
-            "Level": "region"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "4eec622cdbe40db8f5e3",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "d_State"
-                  }
-                },
-                "Hierarchy": "Region - State"
-              }
-            },
-            "Level": "state_code"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "f01ed000261849b1833b"
 }

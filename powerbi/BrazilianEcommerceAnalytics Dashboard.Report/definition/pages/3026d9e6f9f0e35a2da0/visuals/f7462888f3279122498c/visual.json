@@ -7,7 +7,7 @@
     "z": 3000,
     "height": 75.555555555555557,
     "width": 225.55555555555554,
-    "tabOrder": 10004
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "slicer",
@@ -232,47 +232,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "20add65a76b843d56df0",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b3eabde5dd2a30a04989",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "d_State"
-                  }
-                },
-                "Hierarchy": "Region - State"
-              }
-            },
-            "Level": "region"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "f2b236e390e0dc26771f",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "d_State"
-                  }
-                },
-                "Hierarchy": "Region - State"
-              }
-            },
-            "Level": "state_code"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "20add65a76b843d56df0"
 }

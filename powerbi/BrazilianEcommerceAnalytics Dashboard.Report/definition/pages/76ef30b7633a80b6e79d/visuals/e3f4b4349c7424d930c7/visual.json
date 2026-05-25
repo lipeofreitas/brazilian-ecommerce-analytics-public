@@ -402,37 +402,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "6199c59e5818ef94661d",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "10ca3cb516c1b9da7c4a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "d_OrderStatus"
-              }
-            },
-            "Property": "Order Status"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "39a41b95302e4de42aaa",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "__Measures"
-              }
-            },
-            "Property": "Other | Orders"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
-  }
+  "parentGroupName": "6199c59e5818ef94661d"
 }

@@ -7,7 +7,7 @@
     "z": 2000,
     "height": 75.555555555555557,
     "width": 225.55555555555554,
-    "tabOrder": 9011
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "slicer",
@@ -226,20 +226,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "ea9aef8adff5445714f7",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "d_Products"
-              }
-            },
-            "Property": "product_category_group"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

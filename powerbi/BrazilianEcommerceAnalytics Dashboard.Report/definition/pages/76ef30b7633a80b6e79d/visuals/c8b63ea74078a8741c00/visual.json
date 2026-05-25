@@ -184,23 +184,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "f01ed000261849b1833b",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "66ef6017c6b1b0d8cb00",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_approval_speed"
-              }
-            },
-            "Property": "approval_speed_bucket"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "f01ed000261849b1833b"
 }

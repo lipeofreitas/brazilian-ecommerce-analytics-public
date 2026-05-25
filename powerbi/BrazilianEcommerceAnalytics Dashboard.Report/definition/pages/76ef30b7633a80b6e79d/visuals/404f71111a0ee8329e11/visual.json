@@ -188,37 +188,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "f01ed000261849b1833b",
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "78fb2931d764871025ca",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Calendar"
-              }
-            },
-            "Property": "year_number"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "fcd1b17aa845c08cf130",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Calendar"
-              }
-            },
-            "Property": "month_short_name"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
-  }
+  "parentGroupName": "f01ed000261849b1833b"
 }
