@@ -247,10 +247,12 @@ C: above 95% cumulative categorized orders      Gray / Long tail
 
 ### 1. Create a Python environment
 
+This project uses a local Python virtual environment for dependency isolation. The `.venv/` folder is intentionally not committed to GitHub; dependencies are tracked through `requirements.txt`.
+
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-pip install pandas numpy matplotlib sqlalchemy pyodbc
+pip install -r requirements.txt
 ```
 
 ### 2. Prepare SQL Server
