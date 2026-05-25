@@ -1,0 +1,241 @@
+table Calendar
+	lineageTag: 92b3554b-aa07-4dd5-8b28-bd10d7d03b64
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 71b57529-1276-43e2-97c5-7bbaf68e2fad
+		summarizeBy: none
+		sourceColumn: date_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5a68031b-1b9f-4e64-8759-a8b83459855d
+		summarizeBy: none
+		sourceColumn: full_date
+
+		variation Variation
+			isDefault
+			relationship: ce57a609-5047-4e8c-b9f5-1770f785c216
+			defaultHierarchy: LocalDateTable_db32e158-a739-4fc8-9ef8-131ccfd333cd.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column day_number
+		dataType: int64
+		formatString: 0
+		lineageTag: e281aec8-0f36-4c51-9f0b-39ce132f5705
+		summarizeBy: sum
+		sourceColumn: day_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 925759f0-a1a3-4222-af39-69ebe75ad345
+		summarizeBy: sum
+		sourceColumn: month_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 960cb6c4-ebe9-439d-b4cf-a965222f0129
+		summarizeBy: none
+		sourceColumn: month_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_short_name
+		dataType: string
+		lineageTag: ea880667-d02b-4587-89cc-e7aa3af1cd9b
+		summarizeBy: none
+		sourceColumn: month_short_name
+		sortByColumn: month_number
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_number
+		dataType: int64
+		formatString: 0
+		lineageTag: fda5a57a-8e97-4fd7-8562-fb71557731a7
+		summarizeBy: sum
+		sourceColumn: year_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 034f10a8-c11a-45dd-b2cf-d4d0cdbd65c8
+		summarizeBy: sum
+		sourceColumn: quarter_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_of_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b5c9439-8194-490f-b675-1184c499a6a4
+		summarizeBy: sum
+		sourceColumn: week_of_year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_week_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 27e0c16f-a99d-486a-8c68-f0cdcc0d561e
+		summarizeBy: sum
+		sourceColumn: iso_week_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 6fdac1a7-f9c4-4b3a-b45a-8b1387489d22
+		summarizeBy: sum
+		sourceColumn: weekday_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_name
+		dataType: string
+		lineageTag: ba977006-079e-4d9a-8e38-a16b345d6c96
+		summarizeBy: none
+		sourceColumn: weekday_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 94964d42-f463-4ae3-80cf-c22f39fd69e9
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_day_of_month
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0650bc2e-370d-4797-9dfb-f2e522fd9539
+		summarizeBy: none
+		sourceColumn: first_day_of_month
+
+		variation Variation
+			isDefault
+			relationship: 51d837a3-b9bb-4269-944c-3293c7a7f4d2
+			defaultHierarchy: LocalDateTable_1b67b438-a02d-4359-a269-580ee885e007.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column last_day_of_month
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e0455623-24f3-4799-a429-360a566e3f41
+		summarizeBy: none
+		sourceColumn: last_day_of_month
+
+		variation Variation
+			isDefault
+			relationship: aa6e709a-e918-44d1-a9e3-1421069df677
+			defaultHierarchy: LocalDateTable_06983a5c-9f1e-4f3f-9a3a-780fbf574ca5.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column YearMonth
+		dataType: string
+		lineageTag: ef0edafb-cef5-448d-9e6d-04db6b02fdc9
+		summarizeBy: none
+		sourceColumn: YearMonth
+		sortByColumn: YearMonthSort
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthSort
+		dataType: int64
+		formatString: 0
+		lineageTag: 2cdbba1e-db86-4b91-a174-a8bb837e3336
+		summarizeBy: sum
+		sourceColumn: YearMonthSort
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendar = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("localhost", "BrazilianEcommerceAnalytics"),
+				    gold_dim_date = Source{[Schema="gold",Item="dim_date"]}[Data],
+				
+				        AddedYearMonth = Table.AddColumn(
+				        gold_dim_date,
+				        "YearMonth",
+				        each Date.ToText([full_date], "yyyy-MM"),
+				        type text
+				    ),
+				
+				    AddedYearMonthSort = Table.AddColumn(
+				        AddedYearMonth,
+				        "YearMonthSort",
+				        each [year_number] * 100 + [month_number],
+				        Int64.Type
+				    )
+				
+				in
+				    AddedYearMonthSort
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

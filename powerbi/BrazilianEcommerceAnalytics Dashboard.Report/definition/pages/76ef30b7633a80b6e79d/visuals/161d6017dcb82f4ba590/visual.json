@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "161d6017dcb82f4ba590",
+  "position": {
+    "x": 0,
+    "y": 0.4434642308881836,
+    "z": 1000,
+    "height": 209.51128690033354,
+    "width": 435.83710407239812,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "Payment_ToggleDown",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "2a82a940e624f6d49330"
+}

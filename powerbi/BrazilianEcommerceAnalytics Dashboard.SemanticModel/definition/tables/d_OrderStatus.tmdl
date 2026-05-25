@@ -1,0 +1,40 @@
+table d_OrderStatus
+	lineageTag: 78053894-40ab-432a-9efd-523d0ad91a1d
+
+	column order_status
+		lineageTag: 3c7ed43e-2184-4bfe-8168-157871c823b0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [order_status]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Status'
+		lineageTag: afaa7ea4-cfb6-4ded-8b6c-aa6021c1530d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Order Status]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_OrderStatus = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "order_status", STRING,
+				    "Order Status", STRING,
+				    {
+				        {"delivered", "Delivered"},
+				        {"shipped", "Shipped"},
+				        {"canceled", "Canceled"},
+				        {"invoiced", "Invoiced"},
+				        {"processing", "Processing"},
+				        {"approved", "Approved"},
+				        {"created", "Created"},
+				        {"unavailable", "Unavailable"}
+				    }
+				)
+
+	annotation PBI_Id = 10102eacc6e44aa79ec2b37f7d89e23c
+

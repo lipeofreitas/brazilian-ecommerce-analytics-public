@@ -1,0 +1,36 @@
+-----------------------
+venv creation
+-----------------------
+
+venv creation
+
+python -m venv .venv
+.venv\Scripts\activate
+
+
+----------------------
+Libraries installation
+----------------------
+
+pandas
+numpy
+sqlite3
+matplotlib
+sqlalchemy
+pyodbc
+
+
+-----------------------
+Powershell Setup & Troubleshoot
+-----------------------
+
+python -m venv .venv
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+OR
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+.venv\Scripts\Activate.ps1
+
+
+-----------------------
+Other
+-----------------------

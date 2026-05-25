@@ -1,0 +1,117 @@
+table d_Products
+	lineageTag: 22613cb4-744a-463d-85a8-7445857d0dfa
+
+	column product_id
+		dataType: string
+		lineageTag: 8fca5097-d34d-446c-8016-5d79935944ae
+		summarizeBy: none
+		sourceColumn: product_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category_name
+		dataType: string
+		lineageTag: b54ab7ac-18c1-43a6-a53f-be091e591073
+		summarizeBy: none
+		sourceColumn: product_category_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_weight_g
+		dataType: int64
+		formatString: 0
+		lineageTag: ad5cd0bb-5093-47f6-a69c-78f5f36bcd0e
+		summarizeBy: none
+		sourceColumn: product_weight_g
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_length_cm
+		dataType: int64
+		formatString: 0
+		lineageTag: 52d37030-4544-4ed4-ad2c-af7acc24ada3
+		summarizeBy: none
+		sourceColumn: product_length_cm
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_height_cm
+		dataType: int64
+		formatString: 0
+		lineageTag: f6533949-63a6-4276-b70f-db59bc6e4aa8
+		summarizeBy: none
+		sourceColumn: product_height_cm
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_width_cm
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c4787ed-add3-4646-ae6b-cc4227bf56a0
+		summarizeBy: none
+		sourceColumn: product_width_cm
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column zero_weight_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: 12d76cc0-bf14-4223-bfd3-28174e94c2ec
+		summarizeBy: none
+		sourceColumn: zero_weight_flag
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_status
+		dataType: string
+		lineageTag: a2f9e369-1711-478b-9ebb-620057b6a9f9
+		summarizeBy: none
+		sourceColumn: product_status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category_name_clean
+		dataType: string
+		lineageTag: f70b0ab1-8b1d-4f84-bdfa-032f5cc55432
+		summarizeBy: none
+		sourceColumn: product_category_name_clean
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category_group
+		dataType: string
+		lineageTag: 25dfd983-cd6d-488e-81a3-1d3ae92fbb5e
+		summarizeBy: none
+		sourceColumn: product_category_group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_Products = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("localhost", "BrazilianEcommerceAnalytics"),
+				    gold_dim_product = Source{[Schema="gold",Item="dim_product"]}[Data]
+				in
+				    gold_dim_product
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

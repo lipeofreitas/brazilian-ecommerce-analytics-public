@@ -1,0 +1,14 @@
+expression mysv = "localhost" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 9e62cc5f-0149-4701-ba57-bc4eb3d6e4a0
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression mydb = "BrazilianEcommerceAnalytics" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: b8ad2744-d5e3-4484-a580-f1fb90fb4bd1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

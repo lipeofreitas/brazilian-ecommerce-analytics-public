@@ -1,0 +1,42 @@
+model Model
+	culture: en-CA
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-CA
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["f_Orders","d_Geography","Calendar","d_Customers","d_Products","d_Sellers","mysv","mydb","d_Geography_Zip","__Measures","f_Order_items","d_State"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table f_Orders
+ref table DateTableTemplate_7e331ec5-e18b-4dcd-bd89-de7c082c4bc3
+ref table LocalDateTable_65ed4b64-d2b4-4059-95a2-60daaa8f252d
+ref table LocalDateTable_540d7ce7-34b1-4a57-a77f-0e4e66967143
+ref table LocalDateTable_62714e07-6ace-4a9b-9f5d-fbc58d15d6ef
+ref table LocalDateTable_0351408e-20ff-4b0a-8d94-bccf5af299e2
+ref table LocalDateTable_5733cdc4-bbae-478d-bc3b-3324412ad240
+ref table d_Geography
+ref table Calendar
+ref table LocalDateTable_db32e158-a739-4fc8-9ef8-131ccfd333cd
+ref table LocalDateTable_1b67b438-a02d-4359-a269-580ee885e007
+ref table LocalDateTable_06983a5c-9f1e-4f3f-9a3a-780fbf574ca5
+ref table d_Customers
+ref table d_Products
+ref table d_Sellers
+ref table d_Geography_Zip
+ref table __Measures
+ref table '_Rolling Period'
+ref table '_Payment Type'
+ref table f_Order_items
+ref table LocalDateTable_6e3ef1d7-d76e-4150-9d21-76afbfc0937d
+ref table _approval_speed
+ref table d_OrderStatus
+ref table d_PaymentType
+ref table d_State
+
+ref cultureInfo en-CA
+

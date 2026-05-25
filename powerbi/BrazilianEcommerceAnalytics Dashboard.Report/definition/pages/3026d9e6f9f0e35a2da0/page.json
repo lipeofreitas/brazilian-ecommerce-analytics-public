@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "3026d9e6f9f0e35a2da0",
+  "displayName": "Finance Overview",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "outspace": [
+      {
+        "properties": {
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "50D"
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": -0.1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "237L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "e7bd244abda6a5f4bb9a",
+      "target": "21dc7886ecc7fb43d83c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e7bd244abda6a5f4bb9a",
+      "target": "7b396487bd556bf02cff",
+      "type": "NoFilter"
+    },
+    {
+      "source": "35b6cef46f3c613f0cba",
+      "target": "21dc7886ecc7fb43d83c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "21dc7886ecc7fb43d83c",
+      "target": "35b6cef46f3c613f0cba",
+      "type": "DataFilter"
+    },
+    {
+      "source": "7b396487bd556bf02cff",
+      "target": "21dc7886ecc7fb43d83c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "7b396487bd556bf02cff",
+      "target": "35b6cef46f3c613f0cba",
+      "type": "DataFilter"
+    }
+  ]
+}

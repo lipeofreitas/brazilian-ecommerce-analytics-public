@@ -1,0 +1,1297 @@
+table __Measures
+	lineageTag: 322f86e2-fdfa-4ddd-8222-c2de7dfcf913
+
+	measure 'Time | YTDPY Gross Revenue' = CALCULATE([Time | YTD Gross Revenue], SAMEPERIODLASTYEAR('Calendar'[full_date]))
+		displayFolder: Time
+		lineageTag: a2f8b471-6b7f-47d8-93f0-d5b5d5740e22
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | Cancel Rate' = DIVIDE(sum('f_Orders'[is_cancelled]), [Other | Orders])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: KPI
+		lineageTag: 00ce5c86-375a-429d-8611-1b54a8fc4438
+
+		changedProperty = IsHidden
+
+	measure 'KPI | Freight Price' = DIVIDE([Finance | Total Freight Amount],  [Finance | Gross Revenue])
+		displayFolder: KPI
+		lineageTag: 6068501e-a8d2-4286-96f6-f1d6d9687591
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | In Full Proxy' =
+			
+			DIVIDE(
+			    SUM(f_Orders[is_in_full]),
+			    [Other | Orders]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: KPI
+		lineageTag: 735e7420-fc6c-465c-8ab6-72c0fb8ba31c
+
+		changedProperty = IsHidden
+
+	measure 'Time | MTDYOY Gross Revenue' = DIVIDE([Time | MTD Gross Revenue] - [Time | MTDPY Gross Revenue], [Time | MTDPY Gross Revenue])
+		displayFolder: Time
+		lineageTag: 947b5fb9-b6d5-4d9e-88dd-5da84ac5819f
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | On Time Delivered Rate' =
+			
+			DIVIDE(
+			    SUM(f_Orders[is_on_time]),
+			    CALCULATE(
+			        [Other | Orders],
+			        f_Orders[order_status] = "delivered"
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: KPI
+		lineageTag: 15a72ccd-3cf1-43b1-a012-da905b3af346
+
+		changedProperty = IsHidden
+
+	measure 'KPI | OTIF Proxy' = DIVIDE(sum('f_Orders'[is_otif]), [Other | Orders])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: KPI
+		lineageTag: 1f8452c7-c7c1-4192-b7a0-0e3828a6782a
+
+		changedProperty = IsHidden
+
+	measure 'Time | YTDYOY Gross Revenue' = DIVIDE([Time | YTD Gross Revenue] - [Time | YTDPY Gross Revenue], [Time | YTDPY Gross Revenue])
+		displayFolder: Time
+		lineageTag: 3e700d3f-b44f-4139-a045-578318acbece
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Other | Avg Delivery Days (days)' = average('f_Orders'[delivery_days])
+		displayFolder: Other
+		lineageTag: 41a235a9-e5fc-4156-83b8-02d70b44616e
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Finance | Total Freight Amount' = SUM('f_Orders'[freight_value])
+		displayFolder: Finance
+		lineageTag: 29f363ea-8599-48a5-8ce5-cb59f2679764
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Finance | Gross Revenue' = SUM('f_Orders'[gross_revenue])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Finance
+		lineageTag: 98dedaf3-e859-4995-8c2d-25ea804ca7ee
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Time | MTD Gross Revenue' = CALCULATE([Finance | Gross Revenue], DATESMTD('Calendar'[full_date]))
+		displayFolder: Time
+		lineageTag: 788d2e91-64f4-46eb-92ce-afc73d475882
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Time | MTDPY Gross Revenue' = calculate([Time | MTD Gross Revenue], SAMEPERIODLASTYEAR('Calendar'[full_date]))
+		displayFolder: Time
+		lineageTag: 1fab714d-a2cf-4a34-ad9b-3fc4d41a38b8
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Other | Orders' = DISTINCTCOUNT(f_Orders[order_id])
+		formatString: #,0
+		displayFolder: Other
+		lineageTag: 0072a103-8314-4c53-8c22-af23bcbe36af
+
+		changedProperty = IsHidden
+
+	measure 'Finance | Total Payments Amount' = SUM('f_Orders'[total_payment_value])
+		displayFolder: Finance
+		lineageTag: f3ce5b28-67f9-42e9-964f-a14c92dba212
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Time | YTD Gross Revenue' = CALCULATE([Finance | Gross Revenue], DATESYTD('Calendar'[full_date]))
+		displayFolder: Time
+		lineageTag: da9ee1de-dd3a-4c43-9398-b87a98a4983b
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Finance | Revenue per Order' = DIVIDE([Finance | Gross Revenue], [Other | Orders])
+		displayFolder: Finance
+		lineageTag: 8a4256e3-a7d0-456e-aa27-eabd9760797f
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Time | YOY Growth Revenue' = DIVIDE([Time | YTD Gross Revenue] - CALCULATE([Time | YTD Gross Revenue], SAMEPERIODLASTYEAR('Calendar'[full_date])), CALCULATE([Time | YTD Gross Revenue], SAMEPERIODLASTYEAR('Calendar'[full_date])))
+		displayFolder: Time
+		lineageTag: 55590dad-eed6-40a6-bce0-40f8ba2ffb67
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Finance | Revenue per Unique Customer' =
+			
+			DIVIDE(
+			    [Finance | Gross Revenue],
+			    DISTINCTCOUNT(d_Customers[customer_unique_id])
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Finance
+		lineageTag: c043a114-3a3b-4305-b266-b54c7201dd25
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Other | Avg Last Mile Days' = AVERAGE(f_Orders[last_mile_days])
+		displayFolder: Other
+		lineageTag: eac8eab3-e8f6-4385-9004-62ff113e6523
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Other | Orders Delivered on Weekend' = DIVIDE(CALCULATE([Other | Orders], 'Calendar'[is_weekend] = 1), [Other | Orders])
+		formatString: 0%;-0%;0%
+		displayFolder: Other
+		lineageTag: eb9cd6a5-9940-4aec-a6e2-4b73f8f9a827
+
+		changedProperty = IsHidden
+
+	measure 'Other | Orders Delivered on Weekdays' = DIVIDE(CALCULATE([Other | Orders], 'Calendar'[is_weekend] = 0), [Other | Orders])
+		formatString: 0%;-0%;0%
+		displayFolder: Other
+		lineageTag: def6e742-cd5b-4549-b61e-8b198bb29a68
+
+		changedProperty = IsHidden
+
+	measure 'Finance | Installment Orders' = DIVIDE(CALCULATE([Other | Orders], f_Orders[max_installments] > 1), [Other | Orders])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: 8368bb51-31fe-4b66-8c1b-59bd4af61321
+
+		changedProperty = IsHidden
+
+	measure 'Finance | Total per Payment Type' = ```
+			
+			
+			SWITCH(
+			    [Finance | Selected Payment Type],
+			    "CREDIT_CARD",
+			        SUM(f_Orders[payment_value_credit_card]),
+			    "BOLETO",
+			        SUM(f_Orders[payment_value_boleto]),
+			    "DEBIT_CARD",
+			        SUM(f_Orders[payment_value_debit_card]),
+			    "VOUCHER",
+			        SUM(f_Orders[payment_value_voucher]),
+			    "NOT_DEFINED",
+			        SUM(f_Orders[payment_value_not_defined]),
+			    "OTHER",
+			        SUM(f_Orders[payment_value_other])
+			)
+			
+			
+			```
+		displayFolder: Finance
+		lineageTag: ace0f85e-7e75-4f71-9ee8-025531557635
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Finance | Selected Payment Type' = SELECTEDVALUE('_Payment Type'[Payment Type], "CREDIT_CARD")
+		displayFolder: Finance
+		lineageTag: b792e633-a2ae-4ecc-b0f9-2e8961266cca
+
+		changedProperty = IsHidden
+
+	measure 'Finance | Multi Payment' = DIVIDE(CALCULATE([Other | Orders], f_Orders[payment_methods_count] > 1), [Other | Orders])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: bf75cf97-812e-49ae-83f8-353caf1304a4
+
+		changedProperty = IsHidden
+
+	measure 'Finance | Payment Winner' = COUNT(f_Orders[payment_type_winner])
+		formatString: 0
+		displayFolder: Finance
+		lineageTag: 5c29a76b-c762-48b4-9588-4c7a4c18e8c8
+
+		changedProperty = IsHidden
+
+	measure 'KPI | Avg Orders per Customer' = DIVIDE([Other | Orders], DISTINCTCOUNT(f_Orders[customer_id]))
+		displayFolder: KPI
+		lineageTag: 8ea07cef-8999-4b81-86ed-281165466938
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Time | Cumulative Revenue' = CALCULATE([Finance | Gross Revenue], FILTER(ALL('Calendar'[full_date]), 'Calendar'[full_date] <= MAX('Calendar'[full_date])))
+		displayFolder: Time
+		lineageTag: d841d99e-f65f-4f02-bdac-1f0e9a098a70
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Time | Dynamic Rolling Revenue (Approved)' = ```
+			
+			
+			// VAR EndDateFromSelection =
+			//     MAX('Calendar'[YearMonthSort])               
+			// VAR EndDateWithData =
+			//     CALCULATE(
+			//         MAX(f_Orders[order_approved_ts]),
+			//         REMOVEFILTERS('Calendar')
+			//     )
+			// VAR EndDate =
+			//     MIN(EndDateFromSelection, EndDateWithData)
+			// VAR MonthsBack =
+			//     COALESCE([Time | Selected Rolling Months], 24)
+			// VAR FINAL =
+			//     CALCULATE(
+			//         [Finance | Gross Revenue],
+			//         DATESINPERIOD('Calendar'[full_date], EndDate, -MonthsBack, MONTH)
+			//     )
+			
+			// RETURN FINAL
+			
+			VAR EndDateFromSelection =
+			    MAX('Calendar'[full_date])
+			
+			VAR EndDateWithData =
+			    CALCULATE(
+			        MAX(f_Orders[order_approved_ts]),
+			        REMOVEFILTERS('Calendar')
+			    )
+			
+			VAR EndDate =
+			    MIN(EndDateFromSelection, EndDateWithData)
+			
+			VAR MonthsBack =
+			    COALESCE([Time | Selected Rolling Months], 12)
+			
+			RETURN
+			CALCULATE(
+			    [Finance | Gross Revenue],
+			    DATESINPERIOD(
+			        'Calendar'[full_date],
+			        EndDate,
+			        -MonthsBack,
+			        MONTH
+			    )
+			)
+			
+			
+			```
+		displayFolder: Time
+		lineageTag: 655d8f57-1ced-4354-aec5-29b3707fb86c
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Time | Selected Rolling Months' = SELECTEDVALUE('_Rolling Period'[Months], 12)
+		formatString: 0
+		displayFolder: Time
+		lineageTag: 2ea4b4f0-80e0-4e84-b9ad-a30751a1d8d0
+
+		changedProperty = IsHidden
+
+	measure 'Finance | Payment Type Share' = DIVIDE([Finance | Total per Payment Type], [Finance | Total Payments Amount])
+		displayFolder: Finance
+		lineageTag: c13f3102-68b4-4dd0-a881-6939bf099ae7
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Other | Avg Late Delivery Days' = AVERAGE(f_Orders[late_delivery_days])
+		formatString: 0
+		displayFolder: Other
+		lineageTag: 7bfbc026-6411-4f41-a5d1-31532c7da755
+
+		changedProperty = IsHidden
+
+	measure 'Other | Item Quantity' = SUM(f_Orders[items_count])
+		formatString: #,0
+		displayFolder: Other
+		lineageTag: 8f6ae8a8-aced-432a-8c45-41870b7595f9
+
+		changedProperty = IsHidden
+
+	measure 'Other | Average Item Value' = AVERAGE(f_Orders[items_value])
+		displayFolder: Other
+		lineageTag: 5268c7cf-2060-405f-a440-c4779390c528
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | Warehouse Days' = AVERAGE(f_Orders[warehouse_days])
+		displayFolder: KPI
+		lineageTag: 5ed0def0-9ff8-4c15-a6e8-e820adc726ad
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Finance | Payment Gap' = [Finance | Total Payments Amount] - [Finance | Gross Revenue]
+		displayFolder: Finance
+		lineageTag: d685bcb8-1fee-46f3-be60-9c3fd8221937
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Finance | Payment Gap %' = DIVIDE([Finance | Payment Gap], [Finance | Gross Revenue])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: 1f5da8cc-a9e6-4494-a319-85d86a5c2039
+
+		changedProperty = IsHidden
+
+	measure 'KPI | Avg Approval Delay (hours)' = AVERAGEX(f_Orders, DATEDIFF(f_Orders[order_purchase_ts], f_Orders[order_approved_ts], HOUR))
+		displayFolder: KPI
+		lineageTag: 6abc2681-2509-40de-b705-9ba6cd71ca6b
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | Avg Delivery Lead Time (days)' = AVERAGEX(f_Orders, DATEDIFF(f_Orders[order_purchase_ts], f_Orders[order_delivered_customer_ts], DAY))
+		displayFolder: KPI
+		lineageTag: 5c823463-2479-4ec0-8e57-fc2a97c78a66
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | Avg Carrier Lead Time (days)' = AVERAGEX(f_Orders, DATEDIFF(f_Orders[order_approved_ts], f_Orders[order_delivered_carrier_ts], DAY))
+		formatString: 0
+		displayFolder: KPI
+		lineageTag: 78061940-30cc-485a-8720-8b32590b58f4
+
+		changedProperty = IsHidden
+
+	measure 'KPI | Avg Last Mile Lead Time (days)' = AVERAGEX(f_Orders, DATEDIFF(f_Orders[order_delivered_carrier_ts], f_Orders[order_delivered_customer_ts], DAY))
+		displayFolder: KPI
+		lineageTag: e1883b36-ec06-4783-b7ba-0b45564588d9
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | StdDev Delivery Days' = STDEVX.P(f_Orders, DATEDIFF(f_Orders[order_purchase_ts], f_Orders[order_delivered_customer_ts], DAY))
+		displayFolder: KPI
+		lineageTag: 98f6a514-8e47-4622-844e-ec999c03c8c8
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Other | Orders Delivered' = CALCULATE([Other | Orders], FILTER(f_Orders, f_Orders[order_status] = "delivered"))
+		formatString: #,0
+		displayFolder: Other
+		lineageTag: cbfaeb90-2a22-4d7e-8bb6-19fa06a18fa0
+
+		changedProperty = IsHidden
+
+	measure 'KPI | Orders > 7d %' = DIVIDE(CALCULATE([Other | Orders Delivered],FILTER(f_Orders,f_Orders[delivery_days] > 7)), [Other | Orders Delivered])
+		displayFolder: KPI
+		lineageTag: 320db096-44af-4e72-8407-74837969299b
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | Avg Items in Transit' = AVERAGEX(FILTER(f_Orders, f_Orders[order_status] IN {"shipped", "invoiced"}), f_Orders[items_count])
+		displayFolder: KPI
+		lineageTag: 17b57577-452d-4d0e-b242-ee3046995752
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | Avg In-Transit Days' =
+			
+			AVERAGEX(
+			    FILTER(f_Orders, NOT(ISBLANK(f_Orders[order_delivered_carrier_ts])) && NOT(ISBLANK(f_Orders[order_delivered_customer_ts]) && f_Orders[order_status] IN {"shipped", "invoiced"})
+			    ),
+			    DATEDIFF(f_Orders[order_delivered_carrier_ts], f_Orders[order_delivered_customer_ts], DAY)
+			)
+		displayFolder: KPI
+		lineageTag: fb82c218-921e-479a-ab1a-5304b8ef1945
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | Avg Processing Days' =
+			
+			AVERAGEX(
+			    FILTER(f_Orders, NOT(ISBLANK(f_Orders[order_purchase_ts])) && NOT(ISBLANK(f_Orders[order_delivered_carrier_ts]) && f_Orders[order_status] = "processing")
+			    ),
+			    DATEDIFF(f_Orders[order_purchase_ts], f_Orders[order_delivered_carrier_ts], DAY)
+			)
+		displayFolder: KPI
+		lineageTag: 6b194a36-0350-4fb3-b97d-fade56e8958e
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | Approval Bucket Share %' =
+			
+			DIVIDE(
+			    CALCULATE([Other | Orders],
+			    CALCULATE([Other | Orders], ALL(f_Order_Fulfillment[approval_speed_bucket])))
+			)
+		displayFolder: KPI
+		lineageTag: 544d0349-55d0-4cbc-9e27-b4aebcf6c172
+
+	measure debugger1 =
+			
+			
+			VAR EndDateFromSelection = MAX('Calendar'[full_date])
+			VAR EndDateWithData =
+			    CALCULATE(MAX(f_Orders[order_approved_ts]), REMOVEFILTERS('Calendar'))
+			RETURN MIN(EndDateFromSelection, EndDateWithData)
+		formatString: General Date
+		lineageTag: d9f00a6a-25e3-4db8-b727-1a5da10f9af7
+
+	measure 'Time | Dynamic Rolling Order (Approved)' = ```
+			
+			
+			VAR EndDateFromSelection =
+			    MAX('Calendar'[YearMonthSort])               
+			VAR EndDateWithData =
+			    CALCULATE(
+			        MAX(f_Orders[order_approved_ts]),
+			        REMOVEFILTERS('Calendar')
+			    )
+			VAR EndDate =
+			    MIN(EndDateFromSelection, EndDateWithData)
+			VAR MonthsBack =
+			    COALESCE([Time | Selected Rolling Months], 12)
+			VAR FINAL =
+			    CALCULATE(
+			        [Other | Orders],
+			        DATESINPERIOD('Calendar'[full_date], EndDate, -MonthsBack, MONTH)
+			    )
+			
+			RETURN FINAL
+			
+			
+			```
+		formatString: 0
+		displayFolder: Time
+		lineageTag: 7ff927a1-378a-4b5c-bb7c-0939fcacfa23
+
+	measure 'Time | Dynamic Avg Rolling Revenue (Approved)' = ```
+			
+			
+			// CALCULATE([Finance | Gross Revenue], DATESINPERIOD('Calendar'[full_date], MAX('Calendar'[full_date]), - [Time | Selected Rolling Months], MONTH))
+			
+			// VAR EndDateFromSelection =
+			//     MAX('Calendar'[full_date])
+			// VAR EndDateWithData =
+			//     MAX(f_Order_Fulfillment[order_approved_ts])
+			// VAR EndDate =
+			//     MIN(EndDateFromSelection, EndDateWithData)
+			// VAR MonthsBack =
+			//     [Time | Selected Rolling Months]
+			// VAR FINAL =
+			//     CALCULATE(
+			//         [Finance | Gross Revenue],
+			//         DATESINPERIOD('Calendar'[full_date], EndDateWithData, -MonthsBack, MONTH)
+			//     )
+			
+			// RETURN FINAL
+			
+			VAR DynamicRev = [Time | Dynamic Rolling Revenue (Approved)]
+			VAR RollingMonths = SELECTEDVALUE('_Rolling Period'[Months], 12)
+			
+			VAR FINAL = DIVIDE(DynamicRev, RollingMonths, 0)
+			
+			RETURN FINAL
+			
+			
+			```
+		displayFolder: Time
+		lineageTag: 86fba341-3718-4c0a-866a-ff6869b7df0f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Time | Dynamic Avg Rolling Orders (Approved)' = ```
+			
+			
+			// CALCULATE([Finance | Gross Revenue], DATESINPERIOD('Calendar'[full_date], MAX('Calendar'[full_date]), - [Time | Selected Rolling Months], MONTH))
+			
+			// VAR EndDateFromSelection =
+			//     MAX('Calendar'[full_date])
+			// VAR EndDateWithData =
+			//     MAX(f_Order_Fulfillment[order_approved_ts])
+			// VAR EndDate =
+			//     MIN(EndDateFromSelection, EndDateWithData)
+			// VAR MonthsBack =
+			//     [Time | Selected Rolling Months]
+			// VAR FINAL =
+			//     CALCULATE(
+			//         [Finance | Gross Revenue],
+			//         DATESINPERIOD('Calendar'[full_date], EndDateWithData, -MonthsBack, MONTH)
+			//     )
+			
+			// RETURN FINAL
+			
+			VAR DynamicOrders = [Time | Dynamic Rolling Order (Approved)]
+			VAR RollingMonths = SELECTEDVALUE('_Rolling Period'[Months], 12)
+			
+			VAR FINAL = DIVIDE(DynamicOrders, RollingMonths, 0)
+			
+			RETURN FINAL
+			
+			
+			```
+		displayFolder: Time
+		lineageTag: 40382e33-d413-441b-9ce2-8581fa7c78dc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Other | Average Order Value' =
+			
+			DIVIDE(
+			    [Finance | Gross Revenue],
+			    [Other | Orders]
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Other
+		lineageTag: 22d6834e-e996-4f36-8983-ef2ca03a24ab
+
+	measure 'Other | Selected Approval Time' =
+			
+			// "Approval Speed: " &
+			// VAR SelectedValues =
+			//     VALUES(f_Orders[approval_speed_bucket])
+			
+			// VAR CountSelected =
+			//     COUNTROWS(SelectedValues)
+			
+			// VAR CountAll =
+			//     COUNTROWS(ALL(f_Orders[approval_speed_bucket]))
+			
+			// RETURN
+			// IF(
+			//     CountSelected = CountAll,
+			//     "All",
+			//     CONCATENATEX(
+			//         SelectedValues,
+			//         f_Orders[approval_speed_bucket],
+			//         ", "
+			//     )
+			// )
+			
+			
+			"Approval Speed: " &
+			VAR SelectedValues =
+			    VALUES('_approval_speed'[approval_speed_bucket])
+			
+			VAR CountSelected =
+			    COUNTROWS(SelectedValues)
+			
+			VAR CountAll =
+			    CALCULATE(
+			        DISTINCTCOUNT('_approval_speed'[approval_speed_bucket]),
+			        ALL('_approval_speed')
+			    )
+			
+			RETURN
+			IF(
+			    CountSelected >= CountAll,
+			    "All",
+			    CONCATENATEX(
+			        SelectedValues,
+			        '_approval_speed'[approval_speed_bucket],
+			        ", ",
+			        CALCULATE(MAX('_approval_speed'[approval_speed_sort])),
+			        ASC
+			    )
+			)
+		displayFolder: Other
+		lineageTag: a465d1c3-009e-43eb-9755-c578bc910174
+
+	measure 'Finance | Gross Revenue % of Total (state_name)' =
+			
+			DIVIDE(
+			    [Finance | Gross Revenue],
+			    CALCULATE(
+			        [Finance | Gross Revenue],
+			        ALLSELECTED(d_State[state_name])
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: 737d014d-2342-4ba6-b4f6-fc8ec1babc3b
+
+	measure 'Finance | Item Gross Revenue' = SUM(f_Order_items[item_gross_revenue])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Finance
+		lineageTag: cf26275a-4a47-49f5-a85e-cd904dd7284c
+
+	measure 'KPI | Items in Transit' =
+			
+			VAR TransitOrders =
+			    CALCULATETABLE(
+			        VALUES(f_Orders[order_id]),
+			        f_Orders[order_status] IN {"shipped", "invoiced"}
+			    )
+			RETURN
+			CALCULATE(
+			    COUNTROWS(f_Order_items),
+			    TREATAS(TransitOrders, f_Order_items[order_id])
+			)
+		formatString: #,0
+		displayFolder: KPI
+		lineageTag: 11b86627-9691-4772-9d52-546d4dac029e
+
+	measure 'Other | Average Order Value by Product Category' =
+			
+			DIVIDE(
+			    [Finance | Item Gross Revenue],
+			    DISTINCTCOUNT(f_Order_items[order_id])
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Other
+		lineageTag: fca1c897-7767-46a2-a9a7-0916d3588ff4
+
+	measure 'KPI | Warehouse Days by Product Category' =
+			
+			VAR OrdersFromItems =
+			    VALUES(f_Order_items[order_id])
+			RETURN
+			CALCULATE(
+			    AVERAGE(f_Orders[warehouse_days]),
+			    TREATAS(OrdersFromItems, f_Orders[order_id])
+			)
+		displayFolder: KPI
+		lineageTag: 6d90a176-fc7d-4e6c-9828-967bc2e57f96
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI | Avg Delivery Lead Time by Product Category' =
+			
+			VAR OrdersFromItems =
+			    VALUES(f_Order_items[order_id])
+			RETURN
+			CALCULATE(
+			    AVERAGEX(
+			        f_Orders,
+			        DATEDIFF(
+			            f_Orders[order_purchase_ts],
+			            f_Orders[order_delivered_customer_ts],
+			            DAY
+			        )
+			    ),
+			    TREATAS(OrdersFromItems, f_Orders[order_id])
+			)
+		displayFolder: KPI
+		lineageTag: a074a584-81d2-45cf-b441-2acd2ec9ae44
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Finance | Gross Revenue % of Total (state_code)' =
+			
+			DIVIDE(
+			    [Finance | Gross Revenue],
+			    CALCULATE(
+			        [Finance | Gross Revenue],
+			        ALLSELECTED(d_State[state_code])
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: cf72f7fc-959c-4921-bded-0acc78ec6c7c
+
+	measure 'Finance | Product Category Revenue Rank' =
+			
+			RANKX(
+			    ALLSELECTED(d_Products[product_category_group]),
+			    [Finance | Item Gross Revenue],
+			    ,
+			    DESC,
+			    DENSE
+			)
+		formatString: 0
+		displayFolder: Finance
+		lineageTag: 72d9eb36-9746-4011-b1ea-94bd45c259b0
+
+	measure 'Finance | Product Category Cumulative Revenue' =
+			
+			VAR CurrentRank =
+			    [Finance | Product Category Revenue Rank]
+			RETURN
+			CALCULATE(
+			    [Finance | Item Gross Revenue],
+			    FILTER(
+			        ALLSELECTED(d_Products[product_category_group]),
+			        [Finance | Product Category Revenue Rank] <= CurrentRank
+			    )
+			)
+		displayFolder: Finance
+		lineageTag: f094f317-54bf-46df-b884-091fa77c2dc4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Finance | Product Category Cumulative %' =
+			
+			DIVIDE(
+			    [Finance | Product Category Cumulative Revenue],
+			    CALCULATE(
+			        [Finance | Item Gross Revenue],
+			        ALLSELECTED(d_Products[product_category_group])
+			    )
+			)
+		displayFolder: Finance
+		lineageTag: 061db7eb-863c-4b2a-89ca-6c24238c5f20
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Finance | Product Category Pareto %' =
+			
+			VAR TotalRevenue =
+			    CALCULATE(
+			        [Finance | Item Gross Revenue],
+			        ALLSELECTED(d_Products[product_category_group])
+			    )
+			
+			VAR CurrentRevenue =
+			    [Finance | Item Gross Revenue]
+			
+			VAR SummarizedRevenue =
+			    SUMMARIZE(
+			        ALLSELECTED(d_Products[product_category_group]),
+			        d_Products[product_category_group],
+			        "Revenue", [Finance | Item Gross Revenue]
+			    )
+			
+			VAR CumulativeRevenue =
+			    SUMX(
+			        FILTER(
+			            SummarizedRevenue,
+			            [Revenue] >= CurrentRevenue
+			        ),
+			        [Revenue]
+			    )
+			
+			RETURN
+			DIVIDE(
+			    CumulativeRevenue,
+			    TotalRevenue
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: 0dfd5c5d-a21b-4660-a612-291c0f56d4a7
+
+	measure 'Finance | Pareto 80% Target' =
+			
+			0.8
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: 60d66ef7-fc6d-4d35-bc0e-8e4963df9ae2
+
+	measure 'Other | Pareto Column Color' =
+			
+			VAR CurrentRevenue =
+			    [Finance | Item Gross Revenue]
+			
+			VAR SummarizedRevenue =
+			    ADDCOLUMNS(
+			        ALLSELECTED(d_Products[product_category_group]),
+			        "@Revenue", [Finance | Item Gross Revenue]
+			    )
+			
+			VAR TotalRevenue =
+			    SUMX(
+			        SummarizedRevenue,
+			        [@Revenue]
+			    )
+			
+			VAR RevenueBeforeCurrent =
+			    SUMX(
+			        FILTER(
+			            SummarizedRevenue,
+			            [@Revenue] > CurrentRevenue
+			        ),
+			        [@Revenue]
+			    )
+			
+			VAR CumulativeBeforeCurrent =
+			    DIVIDE(
+			        RevenueBeforeCurrent,
+			        TotalRevenue
+			    )
+			
+			RETURN
+			IF(
+			    CumulativeBeforeCurrent < 0.8,
+			    "#2ECC71",
+			    "#A6A6A6"
+			)
+		displayFolder: Other
+		lineageTag: 3582d250-b770-4711-b8a5-33153ade73aa
+
+	measure 'KPI | Cancel Rate by Product Category' =
+			
+			VAR OrdersFromItems =
+			    VALUES(f_Order_items[order_id])
+			RETURN
+			CALCULATE(
+			    [KPI | Cancel Rate],
+			    TREATAS(OrdersFromItems, f_Orders[order_id])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: KPI
+		lineageTag: e9faab69-d610-4d9f-8817-f37a5ebc89bc
+
+	measure 'Finance | Product Revenue % of Total' =
+			
+			DIVIDE(
+			    [Finance | Item Gross Revenue],
+			    CALCULATE(
+			        [Finance | Item Gross Revenue],
+			        ALLSELECTED(d_Products[product_category_group])
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: 08d12ebe-2825-4060-bdc7-b6db3ad5eb5f
+
+	measure 'KPI | OTIF by Product Category' =
+			
+			VAR OrdersFromItems =
+			    VALUES(f_Order_items[order_id])
+			RETURN
+			CALCULATE(
+			    [KPI | OTIF Proxy],
+			    TREATAS(OrdersFromItems, f_Orders[order_id])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: KPI
+		lineageTag: e7c71c8b-5a49-4bbd-b12f-bdcb96fc36bf
+
+	measure 'Other | OTIF Color' =
+			
+			VAR Value_ = [KPI | OTIF Proxy]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(Value_), "#A6A6A6",
+			    Value_ < 0.80, "#E74C3C",
+			    Value_ < 0.90, "#F1C40F",
+			    "#2ECC71"
+			)
+		displayFolder: Other
+		lineageTag: 803d30f8-b82d-4de9-bdba-9d56fb5db3d9
+
+	measure 'Other | Delivery Days Color' =
+			
+			VAR Value_ = [KPI | Avg Delivery Lead Time (days)]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(Value_), "#A6A6A6",
+			    Value_ <= 10, "#2ECC71",
+			    Value_ <= 15, "#F1C40F",
+			    "#E74C3C"
+			)
+		displayFolder: Other
+		lineageTag: 8e713ff3-db73-419e-a988-a8ad86b7749d
+
+	measure 'Other | Cancel Rate Color' =
+			
+			VAR Value_ = [KPI | Cancel Rate]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(Value_), "#A6A6A6",
+			    Value_ < 0.01, "#2ECC71",
+			    Value_ < 0.03, "#F1C40F",
+			    "#E74C3C"
+			)
+		displayFolder: Other
+		lineageTag: bfd57e32-afb4-4b25-9302-18d770e46815
+
+	measure 'Time | Dynamic Rolling Payment Gap % (Approved)' =
+			
+			
+			// VAR EndDateFromSelection =
+			//     MAX('Calendar'[YearMonthSort])
+			
+			// VAR EndDateWithData =
+			//     CALCULATE(
+			//         MAX(f_Orders[order_approved_ts]),
+			//         REMOVEFILTERS('Calendar')
+			//     )
+			
+			// VAR EndDate =
+			//     MIN(EndDateFromSelection, EndDateWithData)
+			
+			// VAR MonthsBack =
+			//     COALESCE([Time | Selected Rolling Months], 24)
+			
+			// VAR RollingPaymentGap =
+			//     CALCULATE(
+			//         [Finance | Payment Gap],
+			//         DATESINPERIOD(
+			//             'Calendar'[full_date],
+			//             EndDate,
+			//             -MonthsBack,
+			//             MONTH
+			//         )
+			//     )
+			
+			// VAR RollingGrossRevenue =
+			//     CALCULATE(
+			//         [Finance | Gross Revenue],
+			//         DATESINPERIOD(
+			//             'Calendar'[full_date],
+			//             EndDate,
+			//             -MonthsBack,
+			//             MONTH
+			//         )
+			//     )
+			
+			// RETURN
+			//     DIVIDE(RollingPaymentGap, RollingGrossRevenue)
+			
+			VAR EndDateFromSelection =
+			    MAX('Calendar'[full_date])
+			
+			VAR EndDateWithData =
+			    CALCULATE(
+			        MAX(f_Orders[order_approved_ts]),
+			        REMOVEFILTERS('Calendar')
+			    )
+			
+			VAR EndDate =
+			    MIN(EndDateFromSelection, EndDateWithData)
+			
+			VAR MonthsBack =
+			    COALESCE([Time | Selected Rolling Months], 12)
+			
+			RETURN
+			CALCULATE(
+			    [Finance | Payment Gap %],
+			    DATESINPERIOD(
+			        'Calendar'[full_date],
+			        EndDate,
+			        -MonthsBack,
+			        MONTH
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Time
+		lineageTag: d8ee1516-93e8-40e2-aa6c-a2d776251f45
+
+	measure 'Other | On Time Color' =
+			
+			VAR Value_ = [KPI | On Time Delivered Rate]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(Value_), "#A6A6A6",
+			    Value_ < 0.85, "#E74C3C",
+			    Value_ < 0.95, "#F1C40F",
+			    "#2ECC71"
+			)
+		displayFolder: Other
+		lineageTag: e280c4f3-ee51-4f9d-95c4-b7fecdb06775
+
+	measure 'KPI | OTIF Test (OT*IF)' = [KPI | On Time Delivered Rate] * [KPI | In Full Proxy]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: KPI
+		lineageTag: 30db47e8-e701-4b1e-a2b6-9d232b74899b
+
+	measure 'KPI | ABC Orders Pareto %' =
+			
+			VAR CurrentOrders =
+			    [Other | Orders by Product Category]
+			
+			VAR CategorySummary =
+			    ADDCOLUMNS(
+			        ALLSELECTED(d_Products[product_category_group]),
+			        "@Orders", [Other | Orders by Product Category]
+			    )
+			
+			VAR TotalOrders =
+			    SUMX(CategorySummary, [@Orders])
+			
+			VAR CumulativeOrders =
+			    SUMX(
+			        FILTER(
+			            CategorySummary,
+			            [@Orders] >= CurrentOrders
+			        ),
+			        [@Orders]
+			    )
+			
+			RETURN
+			DIVIDE(CumulativeOrders, TotalOrders)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: KPI
+		lineageTag: 1e963221-1d03-4420-b59f-69933c0bad96
+
+	measure 'Other | ABC Class' = ```
+			
+			
+			VAR IsCategoryRow =
+			    ISINSCOPE(d_Products[product_category_group])
+			
+			VAR ParetoPct =
+			    [KPI | ABC Orders Pareto %]
+			
+			RETURN
+			IF(
+			    NOT IsCategoryRow,
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        ParetoPct <= 0.8, "A",
+			        ParetoPct <= 0.95, "B",
+			        "C"
+			    )
+			)
+			
+			
+			```
+		displayFolder: Other
+		lineageTag: 34d9943d-3c04-4946-826b-f467d8326417
+
+	measure 'Other | ABC Class Color' =
+			
+			SWITCH(
+			    [Other | ABC Class],
+			    "A", "#2ECC71",
+			    "B", "#F1C40F",
+			    "C", "#A6A6A6"
+			)
+		displayFolder: Other
+		lineageTag: 77fc657f-88ca-4ddb-b45a-80003d56215f
+
+	measure 'Other | Orders by Product Category' = DISTINCTCOUNT(f_Order_items[order_id])
+		formatString: #,0
+		displayFolder: Other
+		lineageTag: 4161881a-c268-4a2a-843e-3f5a0d3126a8
+
+	measure 'Other | Orders % by Product Category' =
+			
+			DIVIDE(
+			    [Other | Orders by Product Category],
+			    CALCULATE(
+			        [Other | Orders],
+			        ALLSELECTED(d_Products[product_category_group])
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Other
+		lineageTag: 9dc8b1dc-9238-448f-abda-8aa5017a14f5
+
+	measure 'Finance | Payment Gap % Green' =
+			
+			VAR GapPct =
+			    [Finance | Payment Gap %]
+			RETURN
+			IF(
+			    ABS(GapPct) <= 0.005,
+			    GapPct,
+			    BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: 1c45ebd1-4ca8-4a1e-9061-969473a2d549
+
+	measure 'Finance | Payment Gap % Yellow' =
+			
+			VAR GapPct =
+			    [Finance | Payment Gap %]
+			RETURN
+			IF(
+			    ABS(GapPct) > 0.005
+			        && ABS(GapPct) <= 0.02,
+			    GapPct,
+			    BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: 6e144a47-86aa-4f6e-bb44-03ba82faa241
+
+	measure 'Finance | Payment Gap % Red' =
+			
+			VAR GapPct =
+			    [Finance | Payment Gap %]
+			RETURN
+			IF(
+			    ABS(GapPct) > 0.02,
+			    GapPct,
+			    BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: aa24c7e5-ef7f-481d-b9fa-a50f442b66dd
+
+	measure 'Finance | Payment Gap 2% Critical Target' =
+			
+			
+			VAR HasRevenue =
+			    [Finance | Gross Revenue] > 0
+			RETURN
+			IF(
+			    HasRevenue,
+			    0.02,
+			    BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Finance
+		lineageTag: 827b74ae-32b5-442e-81be-d2d9b911d270
+
+	measure 'KPI | OTIF 90% Target' =
+			
+			
+			VAR HasOrders =
+			    [Other | Orders] > 0
+			RETURN
+			IF(
+			    HasOrders,
+			    0.90,
+			    BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: KPI
+		lineageTag: 67fb8aae-94ca-4a6d-bf0c-b053b42d9e3e
+
+	measure 'KPI | On Time 95% Target' =
+			
+			VAR HasOrders =
+			    [Other | Orders] > 0
+			RETURN
+			IF(
+			    HasOrders,
+			    0.95,
+			    BLANK()
+			)
+		displayFolder: KPI
+		lineageTag: 868e92f7-a915-485a-9fbf-c59790e05c22
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Time | Dynamic Rolling Payment Gap Critical Target' =
+			
+			VAR HasRevenue =
+			    NOT ISBLANK([Time | Dynamic Rolling Revenue (Approved)])
+			RETURN
+			IF(
+			    HasRevenue,
+			    0.02,
+			    BLANK()
+			)
+		displayFolder: Time
+		lineageTag: 2d163553-fa52-4ae8-ae44-fc9f88fa12f0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Time | Dynamic Rolling Window Flag' =
+			
+			VAR MonthsBack =
+			    COALESCE([Time | Selected Rolling Months], 12)
+			
+			VAR EndDateFromSelection =
+			    CALCULATE(
+			        MAX('Calendar'[full_date]),
+			        ALLSELECTED('Calendar')
+			    )
+			
+			VAR EndDateWithData =
+			    CALCULATE(
+			        MAX(f_Orders[order_approved_ts]),
+			        REMOVEFILTERS('Calendar')
+			    )
+			
+			VAR EndDate =
+			    MIN(EndDateFromSelection, EndDateWithData)
+			
+			VAR EndMonth =
+			    DATE(YEAR(EndDate), MONTH(EndDate), 1)
+			
+			VAR StartMonth =
+			    EDATE(EndMonth, -MonthsBack + 1)
+			
+			VAR CurrentMonth =
+			    DATE(
+			        YEAR(MAX('Calendar'[full_date])),
+			        MONTH(MAX('Calendar'[full_date])),
+			        1
+			    )
+			
+			RETURN
+			IF(
+			    CurrentMonth >= StartMonth
+			        && CurrentMonth <= EndMonth,
+			    1,
+			    0
+			)
+		formatString: 0
+		displayFolder: Time
+		lineageTag: 641798cd-3302-462b-9547-dd20d43a0b5d
+
+	column xPlaceholder
+		dataType: int64
+		formatString: 0
+		lineageTag: 4474c227-4a46-4179-ac81-ead9f36e731c
+		summarizeBy: sum
+		sourceColumn: xPlaceholder
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition __Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlSKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Placeholder = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Placeholder", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Placeholder", "xPlaceholder"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

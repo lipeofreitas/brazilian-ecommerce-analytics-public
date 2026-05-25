@@ -1,0 +1,35 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Power BI local/cache files
+**/.pbi/
+
+# Local databases and generated exports
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+*.tmp
+
+# Raw data files are downloaded/generated locally.
+# Keep sample data or metadata in Git if needed, but avoid committing full raw extracts.
+data/0. raw/*.csv
+
+# Large binary Power BI files.
+# Prefer PBIP/TMDL files for source control; keep PBIX out unless you explicitly want a downloadable report.
+*.pbix

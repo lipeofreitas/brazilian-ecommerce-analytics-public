@@ -1,0 +1,53 @@
+table _approval_speed
+	lineageTag: 593a788a-7123-4307-8047-4058f93a5abe
+
+	column approval_speed_bucket
+		lineageTag: 1d07984b-41b7-4f40-8ad6-9c2547fe79ef
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [approval_speed_bucket]
+		sortByColumn: approval_speed_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column approval_speed_sort
+		formatString: 0
+		lineageTag: 5e9dfc55-9c45-40e7-82fe-7afcb65435e1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [approval_speed_sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _approval_speed = calculated
+		mode: import
+		source = ```
+				
+				DATATABLE(
+				    "approval_speed_bucket", STRING,
+				    "approval_speed_sort", INTEGER,
+				    {
+				        {"<1h", 1},
+				        {"1-6h", 2},
+				        {"6-12h", 3},
+				        {"12-24h", 4},
+				        {"24h+", 5}
+				    }
+				)
+				
+				// _approval_speed = 
+				// DATATABLE(
+				//     "approval_speed_bucket", STRING,
+				//     "approval_speed_sort", INTEGER,
+				//     {
+				//         {"<1h", 1},
+				//         {"1–6h", 2},
+				//         {"6–12h", 3},
+				//         {"12–24h", 4},
+				//         {"24h+", 5}
+				//     }
+				// )
+				```
+
+	annotation PBI_Id = 0bc694ea5d544e9b84c357f7a6888303
+

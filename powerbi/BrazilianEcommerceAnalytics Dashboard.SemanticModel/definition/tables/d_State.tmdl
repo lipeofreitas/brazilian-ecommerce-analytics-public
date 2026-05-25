@@ -1,0 +1,87 @@
+table d_State
+	lineageTag: 60433f39-f51d-4a69-9e50-62ee14dc0239
+
+	column state_code
+		dataType: string
+		lineageTag: 3a36c14a-6732-437f-852b-6a2d4279c345
+		summarizeBy: none
+		sourceColumn: state_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column state_name
+		dataType: string
+		lineageTag: d20735b2-864c-4b41-8b6d-7c244f665e87
+		summarizeBy: none
+		sourceColumn: state_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: a4798bd7-d9c4-41fc-a16a-bad800f31e97
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: dee4b7c9-5349-4f4c-a5fc-971307b8782a
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column map_location
+		dataType: string
+		lineageTag: 7eeddcc8-cdd8-454c-b6c9-17510e4d249c
+		summarizeBy: none
+		sourceColumn: map_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column state_lat
+		dataType: double
+		lineageTag: c341810e-8d1e-491d-914c-6f4422df9e14
+		summarizeBy: none
+		sourceColumn: state_lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column state_lng
+		dataType: double
+		lineageTag: 7d4731f1-dfbf-4ec6-b72e-6e7d5144b07b
+		summarizeBy: none
+		sourceColumn: state_lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	hierarchy 'Region - State'
+		lineageTag: 0bee479f-b8c7-4e6e-8063-e853041df361
+
+		level region
+			lineageTag: e401eaa6-59e2-4607-8b80-089bf092efbd
+			column: region
+
+		level state_code
+			lineageTag: a32373c5-4be5-4fb2-9f98-9bbb15711b86
+			column: state_code
+
+	partition d_State = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("localhost", "BrazilianEcommerceAnalytics"),
+				    gold_dim_state = Source{[Schema="gold",Item="dim_state"]}[Data]
+				in
+				    gold_dim_state
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

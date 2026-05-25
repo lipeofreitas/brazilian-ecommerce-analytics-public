@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "6d9f2248201931e394cc",
+      "displayName": "Group - Executive",
+      "children": [
+        "b4d82a2b1d297bbf1a68",
+        "09b3f8860f271cb5adad",
+        "b400df869c15550caf0b",
+        "a812a3a3876ea0a50730"
+      ]
+    },
+    {
+      "name": "025bd79f714b3a583b71",
+      "displayName": "Group - Finance",
+      "children": [
+        "84100f8e24e2db90a84f",
+        "9211abe3efa185d5deae"
+      ]
+    },
+    {
+      "name": "fda906f08b28773d0002",
+      "displayName": "Group - Operations",
+      "children": [
+        "ff196834fb67154a96f1",
+        "b5e5d3a76be2e57fc942"
+      ]
+    }
+  ]
+}

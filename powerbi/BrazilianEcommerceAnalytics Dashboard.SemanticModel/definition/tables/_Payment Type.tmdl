@@ -1,0 +1,22 @@
+table '_Payment Type'
+	lineageTag: 14e40211-4c1a-4172-9e82-365e230369e5
+
+	column 'Payment Type'
+		lineageTag: a295437a-d643-43c6-bdff-b8f24713d0b8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Payment Type]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_Payment Type' = calculated
+		mode: import
+		source =
+				DATATABLE("Payment Type", STRING,
+				    {
+				        {"CREDIT_CARD"}, {"BOLETO"}, {"DEBIT_CARD"}, {"VOUCHER"}, {"NOT_DEFINE"}, {"OTHER"}
+				    }
+				)
+
+	annotation PBI_Id = 7ca210bf50c1463fbd482208594f8684
+

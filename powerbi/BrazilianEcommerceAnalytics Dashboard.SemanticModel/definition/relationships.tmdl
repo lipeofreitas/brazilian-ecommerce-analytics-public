@@ -1,0 +1,98 @@
+relationship bac63827-c9a5-46ca-bade-8d5aab0c6535
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Orders.order_purchase_ts
+	toColumn: LocalDateTable_65ed4b64-d2b4-4059-95a2-60daaa8f252d.Date
+
+relationship 2b7af1f2-0e98-43b0-b6fa-3135ba1f7249
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Orders.order_approved_ts
+	toColumn: LocalDateTable_540d7ce7-34b1-4a57-a77f-0e4e66967143.Date
+
+relationship f07692ed-be38-42e0-9f5d-6f8827af5b7c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Orders.order_delivered_carrier_ts
+	toColumn: LocalDateTable_62714e07-6ace-4a9b-9f5d-fbc58d15d6ef.Date
+
+relationship 95df6182-9165-4d2b-bc8b-e5d149738631
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Orders.order_delivered_customer_ts
+	toColumn: LocalDateTable_0351408e-20ff-4b0a-8d94-bccf5af299e2.Date
+
+relationship cc6d1cb0-c94b-4945-8916-c72cca26c625
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Orders.order_estimated_delivery_date
+	toColumn: LocalDateTable_5733cdc4-bbae-478d-bc3b-3324412ad240.Date
+
+relationship ce57a609-5047-4e8c-b9f5-1770f785c216
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.full_date
+	toColumn: LocalDateTable_db32e158-a739-4fc8-9ef8-131ccfd333cd.Date
+
+relationship 51d837a3-b9bb-4269-944c-3293c7a7f4d2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.first_day_of_month
+	toColumn: LocalDateTable_1b67b438-a02d-4359-a269-580ee885e007.Date
+
+relationship aa6e709a-e918-44d1-a9e3-1421069df677
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.last_day_of_month
+	toColumn: LocalDateTable_06983a5c-9f1e-4f3f-9a3a-780fbf574ca5.Date
+
+relationship AutoDetected_d75729f4-03e5-4f39-ab8a-7de650f90a51
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: d_Customers.customer_id
+	toColumn: f_Orders.customer_id
+
+relationship 0fa72960-6860-4dd9-29bf-89555fb69061
+	fromColumn: f_Orders.purchase_date_key
+	toColumn: Calendar.date_key
+
+relationship 91ff1e6e-9930-2ae9-bde3-158c23571722
+	isActive: false
+	fromColumn: f_Orders.delivered_date_key
+	toColumn: Calendar.date_key
+
+relationship AutoDetected_ea5ade65-8bef-492a-8644-33d43ebfa119
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: d_Geography_Zip.zip_code_prefix
+	toColumn: d_Geography.zip_code_prefix
+
+relationship 39dc3221-0d22-40aa-a91b-b3b316dcc0ac
+	fromColumn: d_Customers.customer_zip_code_prefix
+	toColumn: d_Geography_Zip.zip_code_prefix
+
+relationship 18766847-687e-49c8-8a85-abb1befa747b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Order_items.shipping_limit_ts
+	toColumn: LocalDateTable_6e3ef1d7-d76e-4150-9d21-76afbfc0937d.Date
+
+relationship AutoDetected_910d1e99-aace-45c9-9ea6-d54772343f3d
+	fromColumn: f_Order_items.order_id
+	toColumn: f_Orders.order_id
+
+relationship AutoDetected_78262bc3-3d62-441e-993c-d7a133bfb977
+	fromColumn: f_Order_items.product_id
+	toColumn: d_Products.product_id
+
+relationship AutoDetected_24a9515b-2538-4fb0-ad3e-252d7b21ab99
+	fromColumn: f_Order_items.seller_id
+	toColumn: d_Sellers.seller_id
+
+relationship 481250f5-593f-e5f6-d833-5231d526151d
+	fromColumn: f_Orders.order_status
+	toColumn: d_OrderStatus.order_status
+
+relationship 603ec357-38a0-e2aa-2d78-1724e8fc2caa
+	fromColumn: f_Orders.payment_type_winner
+	toColumn: d_PaymentType.payment_type
+
+relationship 5eb8b91d-70c8-93f5-8f71-c61f5a02dbcf
+	fromColumn: d_Customers.geo_state
+	toColumn: d_State.state_code
+
+relationship 63f386fe-bed1-05ab-a76c-686df8ce2d4b
+	fromColumn: f_Orders.approval_speed_bucket
+	toColumn: _approval_speed.approval_speed_bucket
+

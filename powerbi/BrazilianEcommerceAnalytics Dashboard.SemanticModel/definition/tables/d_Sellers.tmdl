@@ -1,0 +1,95 @@
+table d_Sellers
+	lineageTag: 1616a103-4a52-4508-945d-e3ef3ff6996e
+
+	column seller_id
+		dataType: string
+		lineageTag: 3a23fc5c-da78-492e-947a-70eb626fa3e7
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_city
+		dataType: string
+		lineageTag: 7b0a2802-abf9-49ac-a2a1-4f9a96cd3c70
+		summarizeBy: none
+		sourceColumn: seller_city
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_state
+		dataType: string
+		lineageTag: a7cacb82-c3d4-4c6f-b5d9-3b8409e75d8c
+		summarizeBy: none
+		sourceColumn: seller_state
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_zip_code_prefix
+		dataType: int64
+		formatString: 0
+		lineageTag: 95bd8146-961a-480b-8023-607c417f5edb
+		summarizeBy: none
+		sourceColumn: seller_zip_code_prefix
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_zip_code_prefix_digits_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: 61ed118a-1783-42bd-a8c4-afb7ad8a62a6
+		summarizeBy: none
+		sourceColumn: seller_zip_code_prefix_digits_flag
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column geo_zip_code_prefix
+		dataType: int64
+		formatString: 0
+		lineageTag: 58657a4b-6aa2-4cd2-9727-158532a433ab
+		summarizeBy: none
+		sourceColumn: geo_zip_code_prefix
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column geo_city
+		dataType: string
+		lineageTag: 148d80ff-3cbc-448b-829b-bb97d268744b
+		summarizeBy: none
+		sourceColumn: geo_city
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column geo_state
+		dataType: string
+		lineageTag: cd4077fd-6ef0-4b74-81e9-cc2836a08275
+		summarizeBy: none
+		sourceColumn: geo_state
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_Sellers = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("localhost", "BrazilianEcommerceAnalytics"),
+				    gold_dim_sellers = Source{[Schema="gold",Item="dim_sellers"]}[Data]
+				in
+				    gold_dim_sellers
+

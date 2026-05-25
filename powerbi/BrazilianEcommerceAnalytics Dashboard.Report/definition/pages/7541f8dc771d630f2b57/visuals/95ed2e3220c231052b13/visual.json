@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "95ed2e3220c231052b13",
+  "position": {
+    "x": 271.62204724409446,
+    "y": 6.0472440944881782,
+    "z": 5500,
+    "height": 117.92125984251969,
+    "width": 255,
+    "tabOrder": 5000
+  },
+  "visualGroup": {
+    "displayName": "Group_PyGit_bottom",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "b71825c46551288ddcfb"
+}

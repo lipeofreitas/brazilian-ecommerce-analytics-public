@@ -1,0 +1,155 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "7509101595ea3c8a1e57",
+  "position": {
+    "x": 256.96937787435161,
+    "y": 123.46609257265877,
+    "z": 5000,
+    "height": 35.401901469317195,
+    "width": 994.57216940363,
+    "tabOrder": 10001
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Pareto Analysis: Top 80% Revenue vs Remaining Revenue",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "   ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt",
+                      "color": "#000000"
+                    }
+                  },
+                  {
+                    "value": "•   ",
+                    "textStyle": {
+                      "fontFamily": "Calibri, sans-serif",
+                      "fontSize": "11pt",
+                      "color": "#000000"
+                    }
+                  },
+                  {
+                    "value": "Payment Gap",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Calibri, sans-serif",
+                      "fontStyle": "italic",
+                      "fontSize": "11pt",
+                      "color": "#000000"
+                    }
+                  },
+                  {
+                    "value": ":",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": " <=",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt",
+                      "color": "#000000"
+                    }
+                  },
+                  {
+                    "value": "0.5%",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt",
+                      "color": "#2ecc71"
+                    }
+                  },
+                  {
+                    "value": " | ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "0.5%-2%",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt",
+                      "color": "#f1c40f"
+                    }
+                  },
+                  {
+                    "value": " | >",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt"
+                    }
+                  },
+                  {
+                    "value": "2%",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "9pt",
+                      "color": "#e74c3c"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Info_legend_kpibox'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "20add65a76b843d56df0"
+}

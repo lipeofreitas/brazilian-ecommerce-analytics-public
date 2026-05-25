@@ -1,0 +1,67 @@
+table d_Geography
+	lineageTag: feb7ccaa-a9d4-43d6-821f-2fbee398e201
+
+	column zip_code_prefix
+		dataType: int64
+		formatString: 0
+		lineageTag: d5a22ac2-74a7-422b-a50a-42cbe0a58290
+		summarizeBy: none
+		sourceColumn: zip_code_prefix
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column geo_city
+		dataType: string
+		lineageTag: 070a33d1-6c3c-4bd9-aacc-6bd305276ba6
+		summarizeBy: none
+		sourceColumn: geo_city
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column geo_state
+		dataType: string
+		lineageTag: f8457291-a6c5-4df4-9a8e-cec5486dca9a
+		summarizeBy: none
+		sourceColumn: geo_state
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column geo_lat
+		dataType: double
+		lineageTag: 54c74cd1-94e3-4df0-b160-a76e9e65c14e
+		summarizeBy: sum
+		sourceColumn: geo_lat
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column geo_lng
+		dataType: double
+		lineageTag: d3096d3d-dfc9-4fea-8cfc-78be60e1fbaf
+		summarizeBy: sum
+		sourceColumn: geo_lng
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition d_Geography = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("localhost", "BrazilianEcommerceAnalytics"),
+				    gold_dim_geography = Source{[Schema="gold",Item="dim_geography"]}[Data]
+				in
+				    gold_dim_geography
+

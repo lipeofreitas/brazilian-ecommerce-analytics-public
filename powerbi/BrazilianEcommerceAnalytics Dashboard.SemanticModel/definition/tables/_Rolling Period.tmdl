@@ -1,0 +1,23 @@
+table '_Rolling Period'
+	lineageTag: 5b072998-8186-499e-8a19-894f4e1ae803
+
+	column Months
+		formatString: 0
+		lineageTag: 42626dc5-e8be-4f29-aa63-3c5740427c72
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Months]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_Rolling Period' = calculated
+		mode: import
+		source =
+				DATATABLE("Months", INTEGER,
+				    {
+				        {3}, {6}, {12}, {18}, {24}
+				    }
+				)
+
+	annotation PBI_Id = 5c369de154444866902ca259cd17d697
+

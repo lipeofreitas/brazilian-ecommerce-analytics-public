@@ -1,0 +1,48 @@
+table d_PaymentType
+	lineageTag: e2cc9065-af00-4ae1-8968-7585aab25f46
+
+	column payment_type
+		lineageTag: 73c91a4d-1c98-40ef-a354-11a71584770d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [payment_type]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Type'
+		lineageTag: 97cdc197-abef-4f09-ae43-d9847c314197
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Payment Type]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sort Order'
+		formatString: 0
+		lineageTag: 5ec84f9a-a779-4fd6-8ad7-b731078c20cf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Sort Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_PaymentType = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "payment_type", STRING,
+				    "Payment Type", STRING,
+				    "Sort Order", INTEGER,
+				    {
+				        {"credit_card", "Credit Card", 1},
+				        {"boleto", "Boleto", 2},
+				        {"voucher", "Voucher", 3},
+				        {"debit_card", "Debit Card", 4},
+				        {"not_defined", "Not Defined", 5},
+				        {"other", "Other", 6}
+				    }
+				)
+
+	annotation PBI_Id = 07eefcbaec1541e69175602a0220cc54
+
