@@ -68,6 +68,8 @@ Gold models are designed for dashboarding and analytics:
 
 The Power BI report is published publicly through Power BI Service and source-controlled as a Power BI Project (`.pbip`). The binary `.pbix` file is intentionally excluded from this public repository.
 
+The dashboard was built using native Power BI visuals only, without third-party custom visual add-ons. This keeps the report lightweight, portable, and easier to maintain or review in a corporate-style environment.
+
 The PBIP structure makes the report and semantic model readable in GitHub:
 
 - Report definition files: `powerbi/BrazilianEcommerceAnalytics Dashboard.Report/`
